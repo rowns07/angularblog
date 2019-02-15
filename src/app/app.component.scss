@@ -1,0 +1,45 @@
+  .container-box {
+    width: 100vw;
+    height: 100vh;
+    // max-width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: auto;
+    grid-template-rows: 10vh 85vh 5vh;
+    grid-template-areas:
+      'header header header'
+      'aside main main'
+      'footer footer footer'
+    ;
+    // border: solid;
+  }
+  
+  .box {
+    background-color: #9009A0;
+  }
+  
+  header {
+    grid-area: header;
+    background-color: black!important;
+  }
+  
+  aside {
+    grid-area: aside;
+    background-color: #9009A0!important;
+    min-height: 300px!important;
+    overflow:auto;
+    width: 20vw;
+  }
+  
+  main {
+    grid-area: main;
+    background-color: red!important;
+    overflow: auto;
+    width: 80vw;
+  }
+  
+  footer {
+    grid-area: footer;
+    background-color: gray!important;
+  }

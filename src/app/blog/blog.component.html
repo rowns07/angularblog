@@ -1,0 +1,19 @@
+<span>Blog List</span>
+<div class="page-wrapper">
+  <div>
+    <div *ngFor="let post of posts$ | async">
+      <div>{{ post.title.rendered }}</div>
+      <div>{{ post.date_gmt | date }}</div>
+      <!-- <img [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url"> -->
+      <div [innerHTML]="post.excerpt.rendered"></div>
+      <div>
+        <a [href]="post.link">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div style="border:solid;" *ngFor="let postinho of posts2 | async">
+  {{postinho.title.rendered}}
+  <div [innerHTML]="postinho.content.rendered"></div>
+</div>

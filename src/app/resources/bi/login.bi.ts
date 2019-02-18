@@ -16,5 +16,9 @@ export namespace LoginBi {
         public doLogin(requestLogin: Login): Observable<Login> {
             return this.httpService.post(true, requestLogin);
         }
+
+        // public requestLogout(): Observable<Object> {
+        //     return this.httpService.get('auth/logout', true);
+        // }
     }
 }

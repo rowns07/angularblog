@@ -9,7 +9,7 @@ export class HttpService {
 
 
   constructor(private http: HttpClient, private sessionService: SessionService) {
-    this.url = 'http://localhost:8888/teste/wp-json/jwt-auth/v1/token';
+    this.url = 'http://localhost:8888/teste/';
   }
 
   public get(path: string, authenticationRequired: boolean): Observable<any> {
@@ -22,26 +22,31 @@ export class HttpService {
 
   /**
   * Requisições POST
-  * @param autenticacao  true para chamadas autenticadas, false para chamadas não autenticadas
-  * @param url url que será concatenada ao path
+  * @param path url que será concatenada a url
+  * @param authenticationRequired true para chamadas autenticadas, false para chamadas não autenticadas
   * @param body Conteúdo que será enviado no corpo da requisição
   * @param headers (Opcional) Conteúdo que será enviado no HttpHeader
   */
-  public post(authenticationRequired: boolean, body: any, headers?: HttpHeaders): Observable<any> {
+  public post(path: string, authenticationRequired?: boolean, body?: any, headers?: HttpHeaders): Observable<any> {
     const options = this.criarOptions(authenticationRequired, undefined, headers);
     let retorno: Observable<any>;
 
-    retorno = this.http.post(this.url, body, options);
-    //   return this.http.post(this.url + path, body);
+    if (authenticationRequired) {
+      retorno = this.http.post(this.url + path, body, options);
+    } else {
+      retorno = this.http.post(this.url + path, body);
+    }
 
     return retorno;
   }
+
 
   private criarOptions(autenticacao: boolean, responseType?: string, headers?: HttpHeaders, body?: any) {
     let _headers: HttpHeaders = new HttpHeaders();
     if (autenticacao) {
       let _authorization = '';
-      _authorization = 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODg4OFwvdGVzdGUiLCJpYXQiOjE1NTAyNzA1OTIsIm5iZiI6MTU1MDI3MDU5MiwiZXhwIjoxNTUwODc1MzkyLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.ydzAft-SL6JSYhHrGnnpuOXWrVeYGkSj0bqw2GT37OU';
+      // _authorization = 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODg4OFwvdGVzdGUiLCJpYXQiOjE1NTAyNzA1OTIsIm5iZiI6MTU1MDI3MDU5MiwiZXhwIjoxNTUwODc1MzkyLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.ydzAft-SL6JSYhHrGnnpuOXWrVeYGkSj0bqw2GT37OU';
+      _authorization = 'Bearer' + this.sessionService.getCurrentResponseLogin().getToken();
       _headers = _headers.append('Authorization', _authorization);
     }
     _headers = _headers.append('Content-Type', 'application/json');

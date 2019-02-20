@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { WordpressService } from '../../resources/services/wordpress.service';
+import { WordpressService } from '../resources/services/wordpress.service';
 
 @Component({
   selector: 'app-blog',

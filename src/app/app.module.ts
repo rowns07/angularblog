@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { BlogComponent } from './blog/blog.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
-import { WordpressService } from '../resources/services/wordpress.service';
+import { WordpressService } from './resources/services/wordpress.service';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from './resources/services/http.service';
 import { CommonModule } from '@angular/common';

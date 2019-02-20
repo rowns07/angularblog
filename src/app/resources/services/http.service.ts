@@ -16,10 +16,6 @@ export class HttpService {
     return this.http.get(this.url + path);
   }
 
-  // public post(path: string, body: any, authenticationRequired: boolean): Observable<any> {
-  //   return this.http.post(this.url + path, body);
-  // }
-
   /**
   * Requisições POST
   * @param path url que será concatenada a url
@@ -45,7 +41,6 @@ export class HttpService {
     let _headers: HttpHeaders = new HttpHeaders();
     if (autenticacao) {
       let _authorization = '';
-      // _authorization = 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODg4OFwvdGVzdGUiLCJpYXQiOjE1NTAyNzA1OTIsIm5iZiI6MTU1MDI3MDU5MiwiZXhwIjoxNTUwODc1MzkyLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.ydzAft-SL6JSYhHrGnnpuOXWrVeYGkSj0bqw2GT37OU';
       _authorization = 'Bearer' + this.sessionService.getCurrentResponseLogin().getToken();
       _headers = _headers.append('Authorization', _authorization);
     }

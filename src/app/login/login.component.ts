@@ -28,9 +28,6 @@ export class LoginComponent implements OnInit {
     new LoginBi.RestAdm(this.httpService).doLogin(clone).subscribe(
       success => {
         this.sessionService.setCurrentResponseLogin(LoginBi.Parser.fill(success));
-        console.log(success);
-        console.log(this.sessionService.getCurrentResponseLogin().getToken());
-        alert('Deu certo mizeraviiiii!');
         this.router.navigateByUrl("home-admin");
       },
       error => {

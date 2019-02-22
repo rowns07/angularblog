@@ -41,7 +41,7 @@ export class HttpService {
     let _headers: HttpHeaders = new HttpHeaders();
     if (autenticacao) {
       let _authorization = '';
-      _authorization = 'Bearer' + this.sessionService.getCurrentResponseLogin().getToken();
+      _authorization = 'Bearer ' + this.sessionService.getCurrentResponseLogin().getToken();
       _headers = _headers.append('Authorization', _authorization);
     }
     _headers = _headers.append('Content-Type', 'application/json');

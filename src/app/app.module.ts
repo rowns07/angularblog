@@ -14,9 +14,11 @@ import { HttpService } from './resources/services/http.service';
 import { CommonModule } from '@angular/common';
 import { SessionService } from './resources/services/session.service';
 import { AuthGuardService } from './resources/services/auth-guard.service';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
-
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,13 @@ import { AuthGuardService } from './resources/services/auth-guard.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    AlertModule.forRoot()
   ],
+  exports: [BsDropdownModule, TooltipModule, ModalModule],
   providers: [WordpressService, HttpService, SessionService, AuthGuardService],
   bootstrap: [AppComponent]
 })

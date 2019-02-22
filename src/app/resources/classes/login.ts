@@ -2,9 +2,6 @@ export class Login {
     private username: string;
     private password: string;
     private token: string;
-    private authorization: string;
-    private authorizationValidity: string;
-    private usuarioId: number;
     private user_email: string;
     private user_nicename: string;
     private user_display_name: string;
@@ -32,24 +29,6 @@ export class Login {
     public setToken(token: string): void {
         this.token = token;
     }
-
-
-
-    // public getAuthorizationValidity(): string {
-    //     return this.authorizationValidity;
-    // }
-
-    // public setAuthorizationValidity(authorizationValidity: string): void {
-    //     this.authorizationValidity = authorizationValidity;
-    // }
-
-    // public getUsuarioId(): number {
-    //     return this.usuarioId;
-    // }
-
-    // public setUsuarioId(usuarioId: number): void {
-    //     this.usuarioId = usuarioId;
-    // }
 
     public getUser_email(): string {
         return this.user_email;

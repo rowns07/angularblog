@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SessionService } from '../../resources/services/session.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private sessionService: SessionService) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    this.router.navigateByUrl['login'];
+    this.router.navigate(['login'])
+    this.sessionService.clear();
+    console.log('SAINDO')
+  }
 }

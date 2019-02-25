@@ -9,7 +9,7 @@
           <a class="nav-item nav-link active" [routerLink]="['home-admin']">Home <span
                   class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" [routerLink]="['blog']">Blog</a>
-          <a class="nav-item nav-link" [routerLink]="['']">Sair</a>
+          <a class="nav-item nav-link" (click)="logout()">Sair</a>
       </div>
   </div>
 </nav>

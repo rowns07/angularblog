@@ -1,19 +1,73 @@
 <span>Blog List</span>
-<div class="page-wrapper">
+<!-- <div class="page-wrapper">
   <div>
     <div *ngFor="let post of listaDePosts">
       <div>{{ post.title.rendered }}</div>
       <div>{{ post.date_gmt | date }}</div>
-      <!-- <img [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url"> -->
+      <img [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url">
       <div [innerHTML]="post.excerpt.rendered"></div>
       <div>
         <a [href]="post.link">View</a>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
- <div style="border:solid;" *ngFor="let postinho of posts2 | async">
+<!-- <div style="border:solid;" *ngFor="let postinho of posts2 | async">
   {{postinho.title.rendered}}
   <div [innerHTML]="postinho.content.rendered"></div>
+</div> -->
+
+
+<!-- MODELO 1 -->
+<!-- <div class="container">
+  <div class="row mb-2">
+    <div class="col-md-6" *ngFor="let post of listaDePosts">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">{{ post.title.rendered }}</h3>
+          <div class="mb-1 text-muted">{{ post.date_gmt | date }}</div>
+          <p class="card-text mb-auto" [innerHTML]="post.excerpt.rendered"></p>
+          <a [href]="post.link" class="stretched-link">Leia mais</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+              dy=".3em">Thumbnail</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- MODELO 2 -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let post of listaDePosts">
+      <div class="card mb-4 shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+          <title>{{ post.title.rendered }}</title>
+          <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+            dy=".3em">{{post.id}}</text>
+        </svg>
+        <div class="card-body">
+          <p class="card-text" [innerHTML]="post.excerpt.rendered"></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a class="btn btn-sm btn-outline-secondary" [href]="post.link" target="_blank">View</a>
+              <button type="button" class="btn btn-sm btn-outline-info">Edit</button>
+              <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+
+            </div>
+            <small class="text-muted">{{ post.date_gmt | date }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

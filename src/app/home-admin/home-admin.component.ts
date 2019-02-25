@@ -8,6 +8,7 @@ import { WordpressBi } from '../resources/bi/wordpress.bi';
 import { LoginBi } from '../resources/bi/login.bi';
 import { Login } from '../resources/classes/login';
 import { WordpressService } from '../resources/services/wordpress.service';
+import { AlertService } from '../shared/alert/alert.service';
 
 @Component({
   selector: 'app-home-admin',
@@ -21,7 +22,7 @@ export class HomeAdminComponent implements OnInit {
   public newPost: DadosPost;
 
   public testeEnvio: Array<any>;
-  constructor(private http: HttpService, private modalService: BsModalService, private sessionService: SessionService, private wpService: WordpressService) { }
+  constructor(private http: HttpService, private modalService: BsModalService, private sessionService: SessionService, private wpService: WordpressService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.newPost = new DadosPost();
@@ -34,15 +35,15 @@ export class HomeAdminComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  creatPost() {
-    this.http.post('wp-json/wp/v2/posts', true, this.testeEnvio)
-      .subscribe(
-        sucess => {
-          console.log(sucess);
-          console.log('Teste de ENVIO',this.testeEnvio);
-        },
-        error => { console.log('nao deu certo') });
-  }
+  // creatPost() {
+  //   this.http.post('wp-json/wp/v2/posts', true, this.testeEnvio)
+  //     .subscribe(
+  //       sucess => {
+  //         console.log(sucess);
+  //         console.log('Teste de ENVIO',this.testeEnvio);
+  //       },
+  //       error => { console.log('nao deu certo') });
+  // }
 
   public enviar(event: Event): void {
     // para prevenir o recarregamento da página
@@ -57,10 +58,12 @@ export class HomeAdminComponent implements OnInit {
         this.wpService.setCurrentResponsePost(WordpressBi.Parser.fill(success));
         console.log(success);
         this.modalRef.hide();
+        this.alertService.showAlertSuccess('Post criado com sucesso.')
       },
       error => {
         this.newPost = dados;
         console.log(error);
+        this.alertService.showAlertDanger('Não foi possivel realizar a postagem.')
       }
     );
   }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '../resources/services/http.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { LoginBi } from '../resources/bi/login.bi';
 import { Login } from '../resources/classes/login';
+import { HttpService } from '../resources/services/http.service';
 import { SessionService } from '../resources/services/session.service';
+import { AlertService } from '../shared/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ import { SessionService } from '../resources/services/session.service';
 })
 export class LoginComponent implements OnInit {
   public requestLogin: Login;
-  constructor(private router: Router, private httpService: HttpService, private sessionService: SessionService) { }
+  bsModalRef: BsModalRef;
+
+  constructor(private router: Router, private httpService: HttpService, private sessionService: SessionService, private alertService: AlertService) { }
 
   public ngOnInit(): void {
     this.requestLogin = new Login();
@@ -33,17 +37,14 @@ export class LoginComponent implements OnInit {
       error => {
         this.requestLogin = clone;
         // TODO: alert error message
-        alert('Senha errada PAI');
+        this.handlError('Usuário ou Senha invalidos');
         console.log(error);
       }
     );
   }
 
-//ROTAS:
-  public irParaBlog() {
-    this.router.navigate(['blog'])
+  private handlError(message: string) {
+    this.alertService.showAlertDanger(message);
   }
-  public irParaHomeAdmin() {
-    this.router.navigate(['home-admin'])
-  }
+
 }

@@ -61,7 +61,7 @@
             <div class="btn-group">
               <a class="btn btn-sm btn-outline-secondary" [href]="post.link" target="_blank">View</a>
               <button type="button" class="btn btn-sm btn-outline-info">Edit</button>
-              <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+              <button type="button" class="btn btn-sm btn-outline-danger" (click)="deletePost(post.id)">Delete</button>
 
             </div>
             <small class="text-muted">{{ post.date_gmt | date }}</small>

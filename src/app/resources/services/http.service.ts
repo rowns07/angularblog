@@ -34,8 +34,16 @@ export class HttpService {
     }
 
     return retorno;
-  }
+  };
 
+  public delete(path: string, authenticationRequired?: boolean, id?: any): Observable<any> {
+    let retorno: Observable<Object>;
+    const options = this.criarOptions(authenticationRequired);
+    if (authenticationRequired) {
+      retorno = this.http.delete(this.url + path, options);
+    }
+    return retorno
+  }
 
   private criarOptions(autenticacao: boolean, responseType?: string, headers?: HttpHeaders, body?: any) {
     let _headers: HttpHeaders = new HttpHeaders();

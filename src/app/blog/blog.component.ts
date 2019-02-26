@@ -4,6 +4,8 @@ import { WordpressBi } from '../resources/bi/wordpress.bi';
 import { DadosPost } from '../resources/classes/dados-post';
 import { HttpService } from '../resources/services/http.service';
 import { WordpressService } from '../resources/services/wordpress.service';
+import { SessionService } from '../resources/services/session.service';
+import { AlertService } from '../shared/alert/alert.service';
 
 @Component({
   selector: 'app-blog',
@@ -15,8 +17,7 @@ export class BlogComponent implements OnInit {
   posts$: Observable<any[]>;
   listaDePosts: Array<DadosPost[]>;
 
-
-  constructor(private wp: WordpressService, private httpService: HttpService) {
+  constructor(private wp: WordpressService, private httpService: HttpService, private sessionService: SessionService, private alertService: AlertService) {
 
     //  Recebendo Observable com pipe async 
     // this.posts$ = this.wp.getPosts();
@@ -36,7 +37,24 @@ export class BlogComponent implements OnInit {
       },
       error => {
         console.log(error);
+        
       }
-    );
+      );
+    }
+    
+    public deletePost(id: number) {
+      new WordpressBi.RestWordpress(this.httpService).delete(id)
+      .subscribe(
+        success => {
+          console.log('Deu Certo ', success);
+          this.alertService.showAlertSuccess('Post removido com sucesso');
+          this.listPosts();
+          
+        },
+        error => {
+          console.log('Deu Ruim', error)
+          this.alertService.showAlertDanger('Erro ao tentar excluir Post');
+        }
+      );
   }
 }

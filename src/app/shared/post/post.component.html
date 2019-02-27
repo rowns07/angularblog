@@ -1,0 +1,13 @@
+<p style="margin-top:100px;">
+  post works!
+</p>
+
+<form *ngIf="wpService?.getCurrentResponsePost()">
+  <div class="form-group">
+    <label for="titlePost">Title Post</label>
+    <input type="text" class="form-control" id="titlePost" placeholder="Lorem Ipsum" [ngModel]="wpService?.getCurrentResponsePost()?.getTitle()?.rendered" name="titlePost"
+    (ngModelChange)="wpService?.getCurrentResponsePost()?.setTitle($event)">
+  </div>
+
+  <!-- <button type="button" class="btn btn-primary" (click)="alterar()"> alterar</button> -->
+  </form>

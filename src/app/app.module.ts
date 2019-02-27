@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +21,9 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert/alert.service';
 import { ModalComponent } from './shared/modal/modal.component';
 import { ModalService } from './shared/modal/modal.service';
+import { PostComponent } from './shared/post/post.component';
+import { AlterarComponent } from './shared/alterar/alterar.component';
+import { VisualizarComponent } from './shared/visualizar/visualizar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { ModalService } from './shared/modal/modal.service';
     HomeAdminComponent,
     MenuComponent,
     AlertComponent,
-    ModalComponent
+    ModalComponent,
+    PostComponent,
+    AlterarComponent,
+    VisualizarComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { ModalService } from './shared/modal/modal.service';
   ],
   entryComponents: [
     AlertComponent,
-    ModalComponent
+    ModalComponent,
+    AlterarComponent,
+    VisualizarComponent
   ],
   bootstrap: [AppComponent]
 })

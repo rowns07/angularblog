@@ -21,6 +21,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { MenuComponent } from './shared/menu/menu.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert/alert.service';
+import { ModalComponent } from './shared/modal/modal.component';
+import { ModalService } from './shared/modal/modal.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AlertService } from './shared/alert/alert.service';
     BlogComponent,
     HomeAdminComponent,
     MenuComponent,
-    AlertComponent
+    AlertComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +55,12 @@ import { AlertService } from './shared/alert/alert.service';
     HttpService,
     SessionService,
     AuthGuardService,
-    AlertService
+    AlertService,
+    ModalService
   ],
   entryComponents: [
-    AlertComponent
+    AlertComponent,
+    ModalComponent
   ],
   bootstrap: [AppComponent]
 })

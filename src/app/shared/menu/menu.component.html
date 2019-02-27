@@ -1,15 +1,23 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <a class="navbar-brand" [routerLink]="['home-admin']">Blog Admin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link active" [routerLink]="['home-admin']">Home <span
-                  class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" [routerLink]="['blog']">Blog</a>
-          <a class="nav-item nav-link" (click)="logout()">Sair</a>
-      </div>
-  </div>
+    <a class="navbar-brand" [routerLink]="['home-admin']">Blog Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" [routerLink]="['home-admin']">Home <span
+                    class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" [routerLink]="['blog']">Blog</a>
+            <a class="nav-item nav-link" (click)="openModal(template)">Sair</a>
+        </div>
+    </div>
 </nav>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Deseja encerrar sua sessão?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+    </div>
+</ng-template>

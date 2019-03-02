@@ -30,7 +30,7 @@ export namespace WordpressBi {
             return this.httpService.get('wp-json/wp/v2/posts', false);
         }
 
-        public addPost(token: any, body: DadosPost): Observable<Login> {
+        public addPost(body: DadosPost): Observable<Login> {
             return this.httpService.post('wp-json/wp/v2/posts', true, body);
         }
 

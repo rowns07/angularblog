@@ -9,7 +9,7 @@ export class HttpService {
 
 
   constructor(private http: HttpClient, private sessionService: SessionService) {
-    this.url = 'http://localhost:8888/teste/';
+    this.url = 'http://odiegosouza.com.br/';
   }
 
   public get(path: string, authenticationRequired: boolean): Observable<any> {

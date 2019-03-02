@@ -52,7 +52,7 @@ export class HomeAdminComponent implements OnInit {
     const dados: DadosPost = Object.assign(new DadosPost(), this.newPost);
     this.newPost = undefined;
 
-    new WordpressBi.RestWordpress(this.http).addPost(this.sessionService.getCurrentResponseLogin().getToken(), dados).subscribe(
+    new WordpressBi.RestWordpress(this.http).addPost(dados).subscribe(
       success => {
         // Preencher objeto no wordpress bi
         this.wpService.setCurrentResponsePost(WordpressBi.Parser.fill(success));

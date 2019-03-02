@@ -1,13 +1,33 @@
-<p style="margin-top:100px;">
-  post works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Modal</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
 
-<form *ngIf="wpService?.getCurrentResponsePost()">
-  <div class="form-group">
-    <label for="titlePost">Title Post</label>
-    <input type="text" class="form-control" id="titlePost" placeholder="Lorem Ipsum" [ngModel]="wpService?.getCurrentResponsePost()?.getTitle()?.rendered" name="titlePost"
-    (ngModelChange)="wpService?.getCurrentResponsePost()?.setTitle($event)">
-  </div>
+  <form *ngIf="wpService?.getCurrentResponsePost()">
+    <div class="form-group">
+      <label for="titlePost">Titulo do Post</label>
+      <input type="text" class="form-control" id="titlePost" placeholder="Lorem Ipsum"
+        [ngModel]="wpService?.getCurrentResponsePost()?.getTitle()?.rendered" name="titlePost"
+        (ngModelChange)="wpService?.getCurrentResponsePost()?.setTitle($event)">
+    </div>
 
-  <!-- <button type="button" class="btn btn-primary" (click)="alterar()"> alterar</button> -->
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Conteudo do Post</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+        [ngModel]="wpService?.getCurrentResponsePost()?.getContent().rendered" name="contentPost"
+        (ngModelChange)="wpService?.getCurrentResponsePost()?.setContent($event)"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="statusPost">Status do Post</label>
+      <input type="text" class="form-control" id="statusPost" placeholder="Status"
+        [ngModel]="wpService?.getCurrentResponsePost()?.getStatus()" name="statusPost"
+        (ngModelChange)="wpService?.getCurrentResponsePost()?.setStatus($event)">
+    </div>
+
+    <!-- <button type="button" class="btn btn-primary" (click)="alterar()"> alterar</button> -->
   </form>
+</div>

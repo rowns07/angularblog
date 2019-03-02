@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 import { SessionService } from './resources/services/session.service';
 import { AuthGuardService } from './resources/services/auth-guard.service';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MenuComponent } from './shared/menu/menu.component';
@@ -44,13 +43,11 @@ import { VisualizarComponent } from './shared/visualizar/visualizar.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot()
   ],
   exports: [
-    BsDropdownModule,
     TooltipModule,
     ModalModule
   ],

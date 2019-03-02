@@ -1,14 +1,15 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { Router } from '@angular/router';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { WordpressBi } from '../resources/bi/wordpress.bi';
 import { DadosPost } from '../resources/classes/dados-post';
 import { HttpService } from '../resources/services/http.service';
-import { SessionService } from '../resources/services/session.service';
 import { WordpressService } from '../resources/services/wordpress.service';
 import { AlertService } from '../shared/alert/alert.service';
 import { AlterarComponent } from '../shared/alterar/alterar.component';
 import { ModalService } from '../shared/modal/modal.service';
+
+
 
 @Component({
   selector: 'app-blog',
@@ -19,14 +20,17 @@ export class BlogComponent implements OnInit {
 
   posts$: Observable<any[]>;
   listaDePosts: Array<DadosPost>;
+  modalRef: BsModalRef;
 
-  constructor(private modalService: ModalService, private router: Router, private wp: WordpressService, private httpService: HttpService, private sessionService: SessionService, private alertService: AlertService) {
-
-    //  Recebendo Observable com pipe async 
+  constructor(
+    private modalService: ModalService,
+    private wp: WordpressService,
+    private httpService: HttpService,
+    private alertService: AlertService
+  ) { }
+   //  Recebendo Observable com pipe async 
     // this.posts$ = this.wp.getPosts();
     // console.log(this.posts$);
-
-  }
   ngOnInit() {
     this.listPosts();
   }
@@ -50,12 +54,13 @@ export class BlogComponent implements OnInit {
         success => {
           console.log('Deu Certo ', success);
           this.alertService.showAlertSuccess('Post removido com sucesso');
+          this.decline();
           this.listPosts();
-
         },
         error => {
           console.log('Deu Ruim', error)
           this.alertService.showAlertDanger('Erro ao tentar excluir Post');
+          this.decline();
         }
       );
   }
@@ -69,5 +74,13 @@ export class BlogComponent implements OnInit {
 
   public modal(component: Type<any>) {
     this.modalService.showModal(component);
+  }
+
+  public openDeleteModal(template: any) {
+    this.modal(template);
+  }
+
+  public decline(){
+    this.modalService.close()
   }
 }

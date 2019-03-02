@@ -10,7 +10,11 @@ export class ModalService {
   constructor(public bsModalService: BsModalService) { }
 
   // Função para chamar modal genericamente, recebebendo o component desejado
-  showModal(component:Type<any>) {
-     this.bsModalService.show(component);
+  public showModal(component: Type<any>) {
+    this.modalSelecionado = this.bsModalService.show(component);
+  }
+
+  public close(): void {
+    this.modalSelecionado.hide();
   }
 }

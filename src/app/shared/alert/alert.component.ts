@@ -13,7 +13,7 @@ export class AlertComponent {
   constructor(private bsModalRef: BsModalRef) { }
 
 
-  onClose(){
+  onClose() {
     this.bsModalRef.hide();
   }
 

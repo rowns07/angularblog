@@ -11,8 +11,8 @@ import { DadosPost } from '../../resources/classes/dados-post';
 export class ModalComponent implements OnInit {
 
   public newPost: DadosPost;
-  modalRef: BsModalRef;
-  
+  public modalRef: BsModalRef;
+
   constructor() { }
 
   ngOnInit() {

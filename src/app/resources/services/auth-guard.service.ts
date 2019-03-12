@@ -4,9 +4,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { SessionService } from './session.service';
 
 @Injectable()
-export class AuthGuardService implements CanActivate  {
+export class AuthGuardService implements CanActivate {
 
-  constructor(private sessionService: SessionService,private router: Router) { }
+  constructor(private sessionService: SessionService, private router: Router) { }
   public canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return new Observable<boolean>(
       observer => {
@@ -18,7 +18,7 @@ export class AuthGuardService implements CanActivate  {
         } else {
           observer.unsubscribe();
           this.sessionService.clear();
-          this.router.navigateByUrl("blog");
+          this.router.navigateByUrl('blog');
         }
       }
     );

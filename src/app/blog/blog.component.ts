@@ -28,9 +28,9 @@ export class BlogComponent implements OnInit {
     private httpService: HttpService,
     private alertService: AlertService
   ) { }
-   //  Recebendo Observable com pipe async 
-    // this.posts$ = this.wp.getPosts();
-    // console.log(this.posts$);
+  //  Recebendo Observable com pipe async
+  // this.posts$ = this.wp.getPosts();
+  // console.log(this.posts$);
   ngOnInit() {
     this.listPosts();
   }
@@ -58,7 +58,7 @@ export class BlogComponent implements OnInit {
           this.listPosts();
         },
         error => {
-          console.log('Deu Ruim', error)
+          console.log('Deu Ruim', error);
           this.alertService.showAlertDanger('Erro ao tentar excluir Post');
           this.decline();
         }
@@ -80,7 +80,8 @@ export class BlogComponent implements OnInit {
     this.modal(template);
   }
 
-  public decline(){
-    this.modalService.close()
+  public decline() {
+    this.modalService.close();
   }
 }
+

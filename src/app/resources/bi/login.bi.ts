@@ -14,7 +14,7 @@ export namespace LoginBi {
         constructor(private httpService: HttpService) { }
 
         public doLogin(requestLogin: Login): Observable<Login> {
-            return this.httpService.post('wp-json/jwt-auth/v1/token',false, requestLogin);
+            return this.httpService.post('wp-json/jwt-auth/v1/token', false, requestLogin);
         }
 
     }

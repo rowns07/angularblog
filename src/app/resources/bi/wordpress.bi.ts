@@ -1,8 +1,7 @@
-import { Observable, observable } from "rxjs";
-import { HttpService } from "../services/http.service";
-import { Login } from "../classes/login";
-import { SessionService } from "../services/session.service";
+import { Observable } from 'rxjs';
 import { DadosPost } from '../classes/dados-post';
+import { Login } from '../classes/login';
+import { HttpService } from '../services/http.service';
 
 
 
@@ -38,8 +37,8 @@ export namespace WordpressBi {
             return this.httpService.delete('wp-json/wp/v2/posts/' + id, true);
         }
 
-        public updatePost(dadosPost:DadosPost):Observable<any>{
-            return this.httpService.post('wp-json/wp/v2/posts/' + dadosPost.getId(),true, dadosPost)
+        public updatePost(dadosPost: DadosPost): Observable<any> {
+            return this.httpService.post('wp-json/wp/v2/posts/' + dadosPost.getId(), true, dadosPost);
         }
 
     }

@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   public requestLogin: Login;
   bsModalRef: BsModalRef;
 
-  constructor(private router: Router, private httpService: HttpService, private sessionService: SessionService, private alertService: AlertService) { }
+  constructor(
+    private router: Router,
+    private httpService: HttpService,
+    private sessionService: SessionService,
+    private alertService: AlertService) { }
 
   public ngOnInit(): void {
     this.requestLogin = new Login();
@@ -32,7 +36,7 @@ export class LoginComponent implements OnInit {
     new LoginBi.RestAdm(this.httpService).doLogin(clone).subscribe(
       success => {
         this.sessionService.setCurrentResponseLogin(LoginBi.Parser.fill(success));
-        this.router.navigateByUrl("home-admin");
+        this.router.navigateByUrl('home-admin');
       },
       error => {
         this.requestLogin = clone;

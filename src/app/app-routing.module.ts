@@ -10,37 +10,37 @@ import { VisualizarComponent } from './shared/visualizar/visualizar.component';
 
 const routes: Routes = [
   {
-    path: "login",
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: "home-admin",
+    path: 'home-admin',
     component: HomeAdminComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "blog",
+    path: 'blog',
     component: BlogComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "post",
+    path: 'post',
     component: PostComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "alterarPost",
+    path: 'alterarPost',
     component: AlterarComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "visualizarPost",
+    path: 'visualizarPost',
     component: VisualizarComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "**",
-    redirectTo: "login"
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 

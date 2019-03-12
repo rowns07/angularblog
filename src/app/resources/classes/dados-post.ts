@@ -3,7 +3,7 @@ export class DadosPost {
     private id: number;
     private title: string;
     private content: string;
-    private status: string
+    private status: string;
 
     public getId(): number {
         return this.id;
@@ -16,20 +16,20 @@ export class DadosPost {
         return this.title;
     }
     public setTitle(title: string) {
-        this.title = title
+        this.title = title;
     }
 
     public getContent(): string {
-        return this.content
+        return this.content;
     }
     public setContent(content: string) {
-        this.content = content
+        this.content = content;
     }
 
     public getStatus(): string {
-        return this.status
+        return this.status;
     }
     public setStatus(status: string) {
-        this.status = status
+        this.status = status;
     }
 }

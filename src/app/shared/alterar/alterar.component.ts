@@ -32,6 +32,6 @@ export class AlterarComponent implements OnInit {
         }, error => {
           console.log('deu merda no testinho');
           this.alertService.showAlertSuccess('Problemas ao alterar post.');
-        })
+        });
   }
 }

@@ -35,20 +35,20 @@ export class Login {
     }
 
     public setUser_email(user_email: string): void {
-        this.user_email = user_email
+        this.user_email = user_email;
     }
     public getUser_nicename(): string {
         return this.user_nicename;
     }
 
     public setUser_nicename(user_nicename: string): void {
-        this.user_nicename = user_nicename
+        this.user_nicename = user_nicename;
     }
     public getUser_display_name(): string {
         return this.user_display_name;
     }
 
     public setUser_display_name(user_display_name: string): void {
-        this.user_display_name = user_display_name
+        this.user_display_name = user_display_name;
     }
 }

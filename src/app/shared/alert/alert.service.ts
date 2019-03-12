@@ -17,10 +17,10 @@ export class AlertService {
   }
 
   showAlertSuccess(message: string) {
-    this.showAlert('success', message)
+    this.showAlert('success', message);
   }
 
   showAlertDanger(message: string) {
-    this.showAlert('danger', message)
+    this.showAlert('danger', message);
   }
 }

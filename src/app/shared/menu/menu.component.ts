@@ -1,8 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SessionService } from '../../resources/services/session.service';
-import { ModalService } from '../modal/modal.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -12,16 +11,16 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class MenuComponent implements OnInit {
 
-  bsModalRef: BsModalRef
-  constructor(private router: Router, private sessionService: SessionService, modalService: ModalService, private bsModalService: BsModalService) { }
+  bsModalRef: BsModalRef;
+  constructor(private router: Router, private sessionService: SessionService, private bsModalService: BsModalService) { }
 
   ngOnInit() {
   }
 
   logout() {
     this.sessionService.clear();
-    this.router.navigate(['login'])
-    console.log('SAINDO')
+    this.router.navigate(['login']);
+    console.log('SAINDO');
   }
 
   openModal(template: TemplateRef<any>) {

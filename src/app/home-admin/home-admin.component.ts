@@ -5,6 +5,7 @@ import { DadosPost } from '../resources/classes/dados-post';
 import { HttpService } from '../resources/services/http.service';
 import { WordpressService } from '../resources/services/wordpress.service';
 import { AlertService } from '../shared/alert/alert.service';
+import { SessionService } from '../resources/services/session.service';
 
 @Component({
   selector: 'app-home-admin',
@@ -22,7 +23,8 @@ export class HomeAdminComponent implements OnInit {
     private http: HttpService,
     private modalService: BsModalService,
     private wpService: WordpressService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private sessionService: SessionService) { }
 
   ngOnInit() {
     this.newPost = new DadosPost();

@@ -12,6 +12,8 @@ import { SessionService } from '../../resources/services/session.service';
 export class MenuComponent implements OnInit {
 
   bsModalRef: BsModalRef;
+  navbarOpen = false;
+  
   constructor(private router: Router, private sessionService: SessionService, private bsModalService: BsModalService) { }
 
   ngOnInit() {
@@ -34,5 +36,9 @@ export class MenuComponent implements OnInit {
 
   decline(): void {
     this.bsModalRef.hide();
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }

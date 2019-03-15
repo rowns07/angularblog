@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
- @import "~bootstrap/dist/css/bootstrap.min.css";
+//  @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/scss/bootstrap';
+// @import 'variables';
 // @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
@@ -9,3 +11,17 @@ a{
 }
 
 
+.teste{
+    transition: width 2s, height 4s;
+}
+
+.section {
+    overflow:hidden;
+    transition:transform 0.3s ease-out; // note that we're transitioning transform, not height!
+    height:auto;
+    transform:scaleY(1); // implicit, but good to specify explicitly
+    transform-origin:top; // keep the top of the element in the same place. this is optional.
+  }
+  .section.collapsed {
+    transform:scaleY(0); // *squish*
+  }

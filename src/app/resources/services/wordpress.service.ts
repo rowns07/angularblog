@@ -6,30 +6,13 @@ export class WordpressService {
 
   constructor() { }
 
+  private currentResponsePost: Array<DadosPost>;
 
-  // public getPosts(): Observable<any[]> {
-
-  //   return this.http.get<any[]>('http://localhost:8888/teste/wp-json/wp/v2/posts', {
-  //     params: {
-  //       per_page: '6'
-  //     }
-  //   });
-  // }
-
-
-  // public loadPosts(): Observable<any[]> {
-  //   let url = "http://localhost:8888/teste/wp-json/wp/v2/posts";
-
-  //   return this.http.get<any[]>(url);
-  // }
-
-  private currentResponsePost: DadosPost;
-
-  public getCurrentResponsePost(): DadosPost {
+  public getCurrentResponsePost(): Array<DadosPost> {
     return this.currentResponsePost;
   }
 
-  public setCurrentResponsePost(currentResponsePost: DadosPost): void {
+  public setCurrentResponsePost(currentResponsePost: Array<DadosPost>): void {
     this.currentResponsePost = currentResponsePost;
   }
 

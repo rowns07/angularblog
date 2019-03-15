@@ -24,22 +24,38 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private wp: WordpressService,
+    private wpService: WordpressService,
     private httpService: HttpService,
     private alertService: AlertService
   ) { }
   //  Recebendo Observable com pipe async
-  // this.posts$ = this.wp.getPosts();
+  // this.posts$ = this.wpService.getPosts();
   // console.log(this.posts$);
   ngOnInit() {
-    this.listPosts();
+    this.atualizaListaDePosts();
   }
 
-  public listPosts() {
-    new WordpressBi.RestWordpress(this.httpService).list().subscribe(
+  // public listarPosts() {
+  //   new WordpressBi.Inteligencia(this.httpService,this.wpService).listPostsFromBack().subscribe(
+  //     success => {
+  //       this.listaDePosts = this.wpService.getCurrentResponsePost();
+  //       console.log('Lista De Posts:', this.listaDePosts);
+  //     },
+  //     error => {
+  //       console.log(error);
+
+  //     }
+  //   );
+  // }
+
+  public atualizaListaDePosts():void{
+    new WordpressBi.Inteligencia(this.httpService,this.wpService).listPostsFromBack().subscribe(
+      // this.wpService.clear();
       success => {
-        this.listaDePosts = WordpressBi.Parser.fillList(success);
-        console.log('Lista De Posts:', this.listaDePosts);
+        this.listaDePosts = this.wpService.getCurrentResponsePost();
+        // console.log('Lista De Posts:', this.listaDePosts);
+        console.log('atualizaListaDePosts');
+
       },
       error => {
         console.log(error);
@@ -48,6 +64,8 @@ export class BlogComponent implements OnInit {
     );
   }
 
+
+
   public deletePost(id: number) {
     new WordpressBi.RestWordpress(this.httpService).delete(id)
       .subscribe(
@@ -55,7 +73,7 @@ export class BlogComponent implements OnInit {
           console.log('Deu Certo ', success);
           this.alertService.showAlertSuccess('Post removido com sucesso');
           this.decline();
-          this.listPosts();
+          this.atualizaListaDePosts();
         },
         error => {
           console.log('Deu Ruim', error);
@@ -65,9 +83,9 @@ export class BlogComponent implements OnInit {
       );
   }
 
-  public postSelecionado(post: DadosPost) {
-    this.wp.clear();
-    this.wp.setCurrentResponsePost(post);
+  public postSelecionado(post: DadosPost[]) {
+    this.wpService.clear();
+    this.wpService.setCurrentResponsePost(post);
     this.modal(AlterarComponent);
     // this.router.navigate(['alterarPost']);
   }

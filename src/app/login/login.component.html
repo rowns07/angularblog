@@ -1,7 +1,7 @@
 <form (ngSubmit)="entrar($event)" ngNativeValidate autocomplete="off" class="form-signin"
 *ngIf="requestLogin !== undefined">
   <!-- <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-  <h1 class="h3 mb-3 font-weight-normal">Blog Admin</h1>
+  <h1 class="h3 mb-3 font-weight-normal text-monospace text-center">BLOG ADMIN</h1>
 
   <label for="inputText" class="sr-only">Usuário</label>
   <input type="text" id="inputText" class="form-control" [ngModel]="requestLogin?.getUsername()" name="username"
@@ -11,7 +11,7 @@
   <input type="password" id="inputPassword" class="form-control" [ngModel]="requestLogin?.getPassword()" name="password"
     (ngModelChange)="requestLogin?.setPassword($event)" placeholder="Senha" required>
 
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">ENTRAR</button>
 </form>
 <!-- <div class="form-signin">
   <button class="btn btn-lg btn-success btn-block" (click)="irParaBlog()"> BLOG</button>

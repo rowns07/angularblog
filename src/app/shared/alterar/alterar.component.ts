@@ -27,6 +27,8 @@ export class AlterarComponent implements OnInit {
       .subscribe(
         success => {
           console.log('deu certo o testinho');
+          new WordpressBi.Inteligencia(this.httpService, this.wpService)
+          .listPostsFromBack();
           this.alertService.showAlertSuccess('Post alterado com sucesso.');
           this.modalService.close();
         }, error => {

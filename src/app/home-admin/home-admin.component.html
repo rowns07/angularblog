@@ -31,12 +31,13 @@
       </div>
       <div class="form-group">
         <label for="statusPost">Status Post</label>
-        <input type="text" class="form-control" id="statusPost" placeholder="Lorem Ipsum"
-          [ngModel]="newPost?.getStatus()" name="statusPost" (ngModelChange)="newPost?.setStatus($event)">
+        <select [ngModel]="newPost?.getStatus()" name="statusPost" (ngModelChange)="newPost?.setStatus($event)" class="custom-select">
+          <option *ngFor="let s of listaStatus" [value]="s.value">
+            {{s.name}}
+          </option>
+        </select>
       </div>
-
       <button type="submit" class="btn btn-primary">Criar Post</button>
-
     </form>
   </div>
 </ng-template>
